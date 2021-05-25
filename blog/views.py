@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
     object_list = Post.objects.filter(status='published')
-    paginator = Paginator(object_list, 2) # 2 posts in each page
+    paginator = Paginator(object_list, 3) # 2 posts in each page
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

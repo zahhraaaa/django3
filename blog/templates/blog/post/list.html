@@ -1,21 +1,21 @@
 {% extends "blog/base.html" %}
-{% block title %}My Blog{% endblock %}
+{% block title %}شرکت خدماتی{% endblock %}
 {% block content %}
 
 {% for post in posts %}
-<div class="col-md-6 col-lg-4 mb-5" style="border: solid 2px #ccc;border-radius: 5px;">
+<div class="col-md-6 col-lg-4 mb-5" style="border: solid 2px #ccc;border-radius: 5px;text-align:right;direction:rtl">
 
-<h2>
+<h2 style="text-align:right">
     <a href="{{ post.get_absolute_url }}">
         {{ post.title }}
     </a>
 </h2>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
-<h6> visits : <b><i> {{post.visits}} </i></b></h6>
+<p class="date" style="text-align:right;direction:rtl">
+    منتشر شده در: {{ post.publish }} <br> توسط: {{ post.author }}
+</p><br>
+<h6 style="text-align:right"> مشاهده: <b><i> {{post.visits}} </i></b></h6>
 
-{{ post.body|truncatewords:30|linebreaks }}
+<p style="text-align:right;direction:rtl">{{ post.body|truncatewords:30|linebreaks }}</p>
 </div>
 {% endfor %}
 {% include "pagination.html" with page=posts %}
