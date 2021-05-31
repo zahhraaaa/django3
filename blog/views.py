@@ -29,4 +29,4 @@ def post_detail(request, year, month, day, post):
  post.save()       
  return render(request,
  'blog/post/detail.html',
- {'post': post})        
+ {'post': post})     

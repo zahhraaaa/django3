@@ -1,0 +1,13 @@
+{% extends "main/datal1.html" %}
+{% block title %}{{ main.title }}{% endblock %}
+{% block content %}
+<div>
+   <h1>{{ main.title }}</h1><br>
+</div>
+<p class="date" style="text-align:right !important;direction:rtl !important; color:#ccc">
+<br><br><br><br>
+   منتشر شده در: {{ main.publish }} توسط {{ main.author }} -  مشاهده: {{main.visits}}
+</p>
+<hr>
+<p style="text-align:right;direction:rtl">{{ main.body|linebreaks }}</p>
+{% endblock %}

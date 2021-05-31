@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import index
-app_name = 'blog'
+from .views import main_list , main_detail
+app_name = 'main'
 urlpatterns = [
  # post views
-    path('',index, name='index')
+    path('',main_list, name='main_list'),
+    path('<int:year>/<int:month>/<int:day>/<slug:main>/',
+    main_detail,
+    name='main_detail'),
     ]
-

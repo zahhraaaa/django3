@@ -1,0 +1,22 @@
+{% extends "main/index.html" %}
+{% block title %}صفحه اصلی {% endblock %}
+{% block content %}
+
+{% for main in mains %}
+<div class="col-md-6 col-lg-4 mb-5" style="border: solid 2px #ccc;border-radius: 5px;text-align:right;direction:rtl">
+
+<h4 style="text-align:right">
+    <a href="{{ main.get_absolute_url }}">
+        {{ main.title }}
+    </a>
+</h4>
+    <p class="date" style="text-align:right;direction:rtl">
+        منتشر شده در: {{ main.publish }} <br> توسط: {{ main.author }}
+    </p><br>
+    <h6 style="text-align:right">  مشاهده: <b><i> {{main.visits}} </i></b></h6>
+    
+    <p style="text-align:right;direction:rtl">{{ main.body|truncatewords:30|linebreaks }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

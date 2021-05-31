@@ -1,16 +1,13 @@
-{% extends "blog/base.html" %}
+{% extends "blog/datal.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<h1>{{ post.title }}</h1>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }} -  visits: {{post.visits}}
-</p>
-<hr/>
-<p>
-خلاصه:
-<br/>
-{{post.summery}}
+<div>
+   <h1>{{ post.title }}</h1><br>
+</div>
+<p class="date" style="text-align:right !important;direction:rtl !important; color:#ccc">
+<br><br><br><br>
+   منتشر شده در: {{ post.publish }} توسط {{ post.author }} -  مشاهده: {{post.visits}}
 </p>
 <hr>
-{{ post.body|linebreaks }}
+<p style="text-align:right;direction:rtl">{{ post.body }}</p>
 {% endblock %}
