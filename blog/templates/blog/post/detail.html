@@ -10,4 +10,9 @@
 </p>
 <hr>
 <p style="text-align:right;direction:rtl">{{ post.body }}</p>
+<p>
+ <a href="{% url "blog:post_share" post.id %}">
+ این نوشته را با دوستانتان به اشتراک بگذارید
+ </a>
+</p>
 {% endblock %}
