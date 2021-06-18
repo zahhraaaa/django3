@@ -8,11 +8,38 @@
 <br><br><br><br>
    منتشر شده در: {{ post.publish }} توسط {{ post.author }} -  مشاهده: {{post.visits}}
 </p>
+{% with comments.count as total_comments %}
+ <h2>
+ تعداد نظرات:{{ total_comments }} 
+ </h2>
+{% endwith %}
 <hr>
 <p style="text-align:right;direction:rtl">{{ post.body }}</p>
 <p>
  <a href="{% url "blog:post_share" post.id %}">
  این نوشته را با دوستانتان به اشتراک بگذارید
  </a>
-</p>
+</p><br>
+{% for comment in comments %}
+ <div class="comment">
+ <p class="info">
+نظر شماره  {{ forloop.counter }} توسط {{ comment.name }}
+ {{ comment.created }}
+ </p>
+ {{ comment.body|linebreaks }}
+ </div>
+{% empty %}
+ <p>هیج نظری تاکنون ثبت نشده است</p>
+{% endfor %}
+{% if new_comment %}
+ <h2>نظر شما با موفقیت ثبت شد</h2>
+{% else %}
+ <h2>ارسال نظر  </h2>
+ <form method="post">
+ {{ comment_form.as_p }}
+ {% csrf_token %}
+ <p><input type="submit" value="Add comment"></p>
+ </form>
+{% endif %}
+
 {% endblock %}

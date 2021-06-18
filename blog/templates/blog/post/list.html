@@ -13,6 +13,7 @@
 <p class="date" style="text-align:right;direction:rtl color:#ccc">
     منتشر شده در: {{ post.publish }} <br> توسط: {{ post.author }}
 </p><br>
+<p class="tags">برچسب ها: {{ post.tags.all|join:", " }}</p>
 <h6 style="text-align:right"> مشاهده: <b><i> {{post.visits}} </i></b></h6>
 
 <p style="text-align:right;direction:rtl">{{ post.body|truncatewords:30|linebreaks }}</p>
