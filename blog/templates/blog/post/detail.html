@@ -1,17 +1,17 @@
 {% extends "blog/datal.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<div>
+<style>.row{display:block !important}</style>
+<div class="row">
    <h1>{{ post.title }}</h1><br>
-</div>
 <p class="date" style="text-align:right !important;direction:rtl !important; color:#ccc">
 <br><br><br><br>
    منتشر شده در: {{ post.publish }} توسط {{ post.author }} -  مشاهده: {{post.visits}}
 </p>
 {% with comments.count as total_comments %}
- <h2>
+ <h4>
  تعداد نظرات:{{ total_comments }} 
- </h2>
+ </h4>
 {% endwith %}
 <hr>
 <p style="text-align:right;direction:rtl">{{ post.body }}</p>
@@ -20,6 +20,9 @@
  این نوشته را با دوستانتان به اشتراک بگذارید
  </a>
 </p><br>
+</div>
+<hr>
+<div class="row">
 <h2>مطالب مشابه</h2>
 {% for post in similar_posts %}
 <p>
@@ -28,11 +31,13 @@
 {% empty %}
 مطلب مشابهی در حال حاضر وجود ندارد
 {% endfor %}
+</div>
 <hr>
+<div class="row">
 <h2>نظرات </h2>
 {% for comment in comments %}
  <div class="comment">
- <p class="info">
+ <p class="info" style=" color:#ccc"  >
 نظر شماره  {{ forloop.counter }} توسط {{ comment.name }}
  {{ comment.created }}
  </p>
@@ -41,9 +46,11 @@
 {% empty %}
  <p>هیج نظری تاکنون ثبت نشده است</p>
 {% endfor %}
+</div>
 {% if new_comment %}
  <h2>نظر شما با موفقیت ثبت شد</h2>
 {% else %}
+<hr>
  <h2>ارسال نظر  </h2>
  <form method="post">
  {{ comment_form.as_p }}
