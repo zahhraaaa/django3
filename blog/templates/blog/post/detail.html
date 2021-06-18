@@ -20,6 +20,16 @@
  این نوشته را با دوستانتان به اشتراک بگذارید
  </a>
 </p><br>
+<h2>مطالب مشابه</h2>
+{% for post in similar_posts %}
+<p>
+<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+</p>
+{% empty %}
+مطلب مشابهی در حال حاضر وجود ندارد
+{% endfor %}
+<hr>
+<h2>نظرات </h2>
 {% for comment in comments %}
  <div class="comment">
  <p class="info">
