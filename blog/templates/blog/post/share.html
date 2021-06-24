@@ -1,32 +1,41 @@
 {% extends "blog/base.html" %}
-{% block title %}Share a post{% endblock %}
+<div class="row">
+{% block title %}اشتراک در یک پست {% endblock %}
 {% block content %}
 {% if sent %}
-<h1>E-mail successfully sent</h1>
-<p>
-    "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+<style>.row{display: block !important;}</style>
+<div  class="row"><h1>ایمیل با موفقیت ارسال شد</h1></div>
+<div  class="row"><p>
+    "{{ post.title }}"با موفقیت ارسال شد به  {{ form.cleaned_data.to }}.
 </p>
+</div>
 {% else %}
+
 <h1>اشتراک "{{ post.title }}" با ایمیل</h1>
+</div>
+<div class="row" style="direction: rtl;">
 <form method="post">
-     {{ form.as_p }}  
-    <!-- <p>نام ارسال کننده:
-    {{from.name}}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    <p>
+نام ارسال کننده :
+    {{ form.name}}
+    </p>
+    <p>
+    ایمیل :
+    {{ form.email}}
+    </p>
+    <p>
+    شخص دریافت کننده :
+    {{ form.to}}
+    </p>
+    <p>
+    توضیحات :
+    {{ form.comments}}
 </p>
-    <p>
-        ایمیل:
-        {{from.email}}
-    </p>
-    <p>
-        شخص دریافت کننده:
-        {{from.to}}
-    </p>
-    <p>
-        توضیحات:
-        {{from.comments}}
-    </p> -->
+
     {% csrf_token %}
-    <input type="submit" value="Send e-mail">
+    <input type="submit" value="ارسال ایمیل">
 </form>
+</div>
 {% endif %}
 {% endblock %}

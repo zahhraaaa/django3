@@ -17,6 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'main.apps.MainConfig',
-    'taggit'
+    'taggit',
+    'social_django',
+    'django_extensions',
 
 ]
 
@@ -124,6 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 EMAIL_HOST: 'smtp.gmail.com'
 EMAIL_HOST_USER: 'zahraa.amini.79@gmail.com'
 EMAIL_HOST_PASSWORD: 'joojeyeJazab'
@@ -131,3 +137,27 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # send_mail('Django mail', 'This e-mail was sent with Django.', 'zahraa.amini.79@gmail.com', ['w3persia@gmail.com'], fail_silently=False)
 # w3persia@gmail.com
+
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = [
+'django.contrib.auth.backends.ModelBackend',
+'account.authentication.EmailAuthBackend',
+'social_core.backends.facebook.FacebookOAuth2',
+'social_core.backends.twitter.TwitterOAuth',
+'social_core.backends.google.GoogleOAuth2',
+]
+
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '811535864202-pn8cj5lor7gu227shq2jtnrnilpckaa1.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'x7U1otmnh3FSFZWsXOXxe-zy' # Google Consumer Secret
+
+
