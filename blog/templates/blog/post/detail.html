@@ -14,7 +14,7 @@
  </h4>
 {% endwith %}
 <hr>
-<p style="text-align:right;direction:rtl">{{ post.body }}</p>
+<p style="text-align:right;direction:rtl">{{ post.body|linebreaks }}</p>
 <p>
  <a href="{% url "blog:post_share" post.id %}">
  این نوشته را با دوستانتان به اشتراک بگذارید

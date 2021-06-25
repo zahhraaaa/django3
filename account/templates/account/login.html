@@ -4,11 +4,11 @@
 {% block title %}Log-in{% endblock %}
 
 {% block content %}
-  <h1>Log-in</h1>
-  <p>Please, use the following form to log-in:</p>
-  <form method="post">
+  <h1>ورود</h1>
+  <p >لطفاً برای ورود به سیستم از فرم زیر استفاده کنید:</p>
+  <form method="post" style="float:right !important">
     {{ form.as_p }}
     {% csrf_token %}
-    <p><input type="submit" value="Log in"></p>
+    <p><input type="submit" value="ورود"></p>
   </form>
 {% endblock %}

@@ -3,35 +3,34 @@
 {% block title %}Log-in{% endblock %}
 
 {% block content %}
-  <h1>Log-in</h1>
+  <h1>ورود به سایت</h1>
   {% if form.errors %}
-    <p>
-      Your username and password didn't match.
-      Please try again.
+    <p >
+      نام کاربری و رمز ورود شما مطابقت ندارد.
+      لطفا دوباره تلاش کنید.
     </p>
   {% else %}
-    <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
+    <p >لطفاً برای ورود به سیستم از فرم زیر استفاده کنید. اگر حساب کاربری ندارید <a href="{% url "register" %}">اینجا ثبت نام کنید</a></p>
   {% endif %}
-  <div class="login-form">
+  <div class="social" style="float:left!important">
+    <ul>
+      
+      <li class="google">
+        <a href="{% url "social:begin" "google-oauth2" %}"> وارد شویدGoogleبا</a>
+      </li>
+    </ul>
+  </div>
+  <style>
+    label{float:right !important}
+  </style>
+    <div class="login-form " style="direction: rtl;float:right!important">
     <form action="{% url 'login' %}" method="post">
       {{ form.as_p }}
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Log-in"></p>
+      <p><input type="submit" value="ورود"></p>
     </form>
-    <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+    <p><a href="{% url "password_reset" %}">آیا رمز ورود خود را فراموش کرده اید؟</a></p>
   </div>
-  <div class="social">
-    <ul>
-      <li class="facebook">
-        <a href="{% url "social:begin" "facebook" %}">Sign in with Facebook</a>
-      </li>
-      <li class="twitter">
-        <a href="{% url "social:begin" "twitter" %}">Login with Twitter</a>
-      </li>
-      <li class="google">
-        <a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a>
-      </li>
-    </ul>
-  </div>
+
 {% endblock %}
