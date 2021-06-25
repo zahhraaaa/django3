@@ -8,7 +8,7 @@
     label{float:right !important}
   </style>
   <p >با استفاده از فرم زیر می توانید حساب خود را ویرایش کنید</p>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" style="float:right !important" >
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
     {% csrf_token %}
